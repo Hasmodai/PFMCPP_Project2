@@ -1,5 +1,6 @@
 #include <iostream>
-
+#include <cmath>
+using namespace std;
 template<typename ...T>
 void ignoreUnused(T&&...) { }
 
@@ -16,15 +17,14 @@ video: Chapter 2 - Part 3
  
  1) Write down the names of all of the primitives available in C++ (excluding wchar_t) here: 
  
+ int 
+ float
+ bool
+ double
+ char
+ unsigned int
  
- 
- 
- 
- 
- 
- 
- 
- 
+  
  
 2) for each primitive type, write out 3 variable declarations inside the variableDeclaration() function on line 59.
     a) give each variable declaration an initial value
@@ -57,9 +57,32 @@ void variableDeclarations()
     //example:
     int number = 2; //declaration of a primitive named 'number' with an initial value of '2'
     
+ int fingers = 10;
+ int cups = 3;
+ int kilometers = -150;
+
+ float weight = 83.6f;
+ float gpa = 4.6f;
+ float percentage = 1.5f;
+
+ bool lights = true;
+ bool awake = false;
+ bool male = true;
+
+ double pi = 3.1415926535897932384626433832795;
+ double piHalf = 1.570796326794897;
+ double goldenRatio = 1.61803398875;
+ 
+ char initial = 'A';
+ char lastLetter = 'Z';
+ char ratedMPAA = 'G';
+
+ unsigned int planets = 8;
+ unsigned int cars = 1;
+ unsigned int daughters = 2;
 
     
-    ignoreUnused(number); //passing each variable declared to the ignoreUnused() function
+    ignoreUnused(number, fingers, cups, kilometers, weight, gpa, percentage, lights, awake, male, pi, piHalf, goldenRatio, initial, lastLetter, ratedMPAA, planets, cars, daughters); //passing each variable declared to the ignoreUnused() function
 }
 
 /*
@@ -75,43 +98,108 @@ bool rentACar(int rentalDuration, int carType = 0)  //function declaration with 
 /*
  1)
  */
+void serveEggs (int howMany, bool scrambled)
+{
+    ignoreUnused(howMany, scrambled);
+}
 
 /*
  2)
  */
+float rectangleArea (float length, float height)
+{
+    float area;
+    area = length * height;
 
+    return area;
+}
 /*
  3)
  */
+float triangleArea (float base, float altitude)
+{
+    float area;
+    area = base * altitude;
+    area = area/2;
 
+    return area;
+}
 /*
  4)
  */
+double circleArea (double radius, double pi = 3.1416)
+{
+double area;
+area = pi * pow(radius, 2);
 
+return area;
+}
 /*
  5)
  */
-
+void chessPlay (char letter, int number, char figure = 'p')
+{
+ignoreUnused(figure, letter, number);
+}
 /*
  6)
  */
-
+void moveTo (float pointX, float pointY)
+{
+    ignoreUnused(pointX, pointY);
+}
 /*
  7)
  */
-
+void rotate (float degrees = 90)
+{
+    ignoreUnused(degrees);
+}
 /*
  8)
  */
+void feedDog (int timeOfDay, bool water, bool specialTreat = true)
+{
+    if ((timeOfDay >= 800 && timeOfDay <= 1000) || (timeOfDay >= 1800 && timeOfDay <= 2000))
+    {
+        if (!water)
+        {
+            //refill water bowl
+        }
 
+        if (specialTreat)
+        {
+            //give treat to dog
+        }
+
+        // fill food bowl
+    }
+}
 /*
  9)
  */
-
+float buyStuff (float moneyInWallet, float priceOfItem)
+{
+    if (moneyInWallet >= priceOfItem)
+    {
+        //buy item 
+        moneyInWallet = moneyInWallet - priceOfItem;
+    }
+    return moneyInWallet;
+}
 /*
  10)
  */
-
+void wakeUp (int weekDay, int timeOfDay, int alarm = 700)
+{
+    if (weekDay != 6 && weekDay != 7) 
+    {
+        if (timeOfDay == alarm)
+        {
+            //set alarm off
+        }
+    }
+}
 /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
 
@@ -132,27 +220,27 @@ int main()
     auto carRented = rentACar(6, 2); 
     
     //1)
-    
+    serveEggs(2, true);
     //2)
-    
+    auto rectArea = rectangleArea(2, 4);
     //3)
-    
+    auto triArea = triangleArea(2, 4);
     //4)
-    
+    auto circArea = circleArea(3);
     //5)
-    
+    chessPlay('g', 5, 'k');
     //6)
-    
+    moveTo(4.6f, 7.2f);
     //7)
-    
+    rotate(45);
     //8)
-    
+    feedDog(830, false);
     //9)
-    
+    auto moneyLeft = buyStuff(1000.0f, 32.50);
     //10)
+    wakeUp(3, 630);
     
-    
-    ignoreUnused(carRented);
+    ignoreUnused(carRented, rectArea, circArea, triArea, moneyLeft);
     std::cout << "good to go!" << std::endl;
     return 0;    
 }
