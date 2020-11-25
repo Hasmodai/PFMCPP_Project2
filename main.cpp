@@ -1,6 +1,5 @@
 #include <iostream>
 #include <cmath>
-using namespace std;
 template<typename ...T>
 void ignoreUnused(T&&...) { }
 
@@ -108,38 +107,31 @@ void serveEggs (int howMany, bool scrambled)
  */
 float rectangleArea (float length, float height)
 {
-    float area;
-    area = length * height;
-
-    return area;
+    ignoreUnused(length, height);
+    return {};
 }
 /*
  3)
  */
 float triangleArea (float base, float altitude)
 {
-    float area;
-    area = base * altitude;
-    area = area/2;
-
-    return area;
+    ignoreUnused(base, altitude);
+    return {};
 }
 /*
  4)
  */
 double circleArea (double radius, double pi = 3.1416)
 {
-double area;
-area = pi * pow(radius, 2);
-
-return area;
+    ignoreUnused(radius, pi);
+    return {};
 }
 /*
  5)
  */
 void chessPlay (char letter, int number, char figure = 'p')
 {
-ignoreUnused(figure, letter, number);
+    ignoreUnused(figure, letter, number);
 }
 /*
  6)
@@ -160,45 +152,23 @@ void rotate (float degrees = 90)
  */
 void feedDog (int timeOfDay, bool water, bool specialTreat = true)
 {
-    if ((timeOfDay >= 800 && timeOfDay <= 1000) || (timeOfDay >= 1800 && timeOfDay <= 2000))
-    {
-        if (!water)
-        {
-            //refill water bowl
-        }
-
-        if (specialTreat)
-        {
-            //give treat to dog
-        }
-
-        // fill food bowl
-    }
+    ignoreUnused(timeOfDay, water, specialTreat);
 }
 /*
  9)
  */
 float buyStuff (float moneyInWallet, float priceOfItem)
 {
-    if (moneyInWallet >= priceOfItem)
-    {
-        //buy item 
-        moneyInWallet = moneyInWallet - priceOfItem;
-    }
-    return moneyInWallet;
+    ignoreUnused(moneyInWallet, priceOfItem);
+
+    return {};
 }
 /*
  10)
  */
 void wakeUp (int weekDay, int timeOfDay, int alarm = 700)
 {
-    if (weekDay != 6 && weekDay != 7) 
-    {
-        if (timeOfDay == alarm)
-        {
-            //set alarm off
-        }
-    }
+    ignoreUnused(weekDay, timeOfDay, alarm);
 }
 /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
